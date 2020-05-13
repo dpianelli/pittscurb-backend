@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "NODE_ENV=production node ./build/index.js",
+    "package": "zip buildartifact.zip build/* package.json",
+    "deploy": "eb deploy",
+    "start": "node ./build/index.js",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
     "tslint": "tslint --project tsconfig.json",
     "prettier:base": "prettier --parser typescript --single-quote",
