@@ -5,8 +5,9 @@ name: PittsCurb-Service-CI/CD
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # Turning this off so it only builds and deploys after a merge is completed which results in a push
+  #  pull_request:
+  #  branches: [ master ]
 
 jobs:
   build:
