@@ -20,15 +20,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
           
-    - uses: borales/actions-yarn@v2.0.0
+    - name: Yarn Install
+      uses: borales/actions-yarn@v2.0.0
       with:
         cmd: install # will run `yarn install` command
-    - uses: borales/actions-yarn@v2.0.0
+    - name: Yarn Build
+      uses: borales/actions-yarn@v2.0.0
       with:
         cmd: build # will run `yarn build` command
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: package # Package build for elasticbeanstalk
+    - name: Zip build
+      run: zip buildartifact.zip build/* package.json
     - name: Get timestamp
       uses: gerred/actions/current-time@master
       id: current-time
@@ -50,3 +51,4 @@ jobs:
         environment_name: PittsCurb-Service-dev
         version_label: "PittsCurb-Service-${{ steps.format-time.outputs.replaced }}"
         region: us-east-1  
+        deployment_package: buildartifact.zip
