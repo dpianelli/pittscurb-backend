@@ -7,6 +7,4 @@ app.get('/', (req, res) => {
   const year = getYear(new Date());
   res.send(`Hello World ! ${year}`);
 });
-app.listen(8080, () => {
-  console.log('App listening on port 8080!');
-});
+app.listen(8080);
