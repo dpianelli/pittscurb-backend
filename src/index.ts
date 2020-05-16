@@ -1,6 +1,5 @@
 import express from 'express';
-import apis from './api/api';
-
+import apis from './api/apis';
 
 const app = express();
 const getYear = (date: Date): string => {
