@@ -2,7 +2,7 @@ import { Router } from 'express';
 import apiHelper from './apiHelper';
 
 const twillioBaseURL =
-  'http://PittsCurb-Twilio.eba-hqzpgnd2.us-east-1.elasticbeanstalk.com';
+  'http://pittscurbservicetwillio-secured.eba-hqzpgnd2.us-east-1.elasticbeanstalk.com';
 
 const router = Router();
 
