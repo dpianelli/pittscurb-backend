@@ -13,4 +13,4 @@ function restWrapper(url: string): Promise<any> {
   });
 }
 
-export default apiHelper;
+export default restWrapper;
