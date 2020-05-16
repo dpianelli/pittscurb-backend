@@ -30,7 +30,7 @@ jobs:
       with:
         cmd: build # will run `yarn build` command
     - name: Zip build
-      run: zip buildartifact.zip build/* package.json
+      run: zip -r buildartifact.zip build/* package.json
     - name: Get timestamp
       uses: gerred/actions/current-time@master
       id: current-time

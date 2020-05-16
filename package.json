@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "package": "zip buildartifact.zip build/* package.json",
+    "package": "zip -r buildartifact.zip build/* package.json",
     "deploy": "eb deploy",
     "start": "node ./build/index.js",
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
