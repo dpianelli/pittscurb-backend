@@ -7,7 +7,7 @@ const twillioBaseURL =
 const router = Router();
 
 router.get('/', (req, res) => {
-  apiHelper(`${twillioBaseURL}/v1/health/twPing`)
+  apiHelper(`${twillioBaseURL}/v1/health/twiPing`)
     .then((response: any) => {
       res.json(response);
     })
