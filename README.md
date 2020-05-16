@@ -1,6 +1,7 @@
-# curb-your-data-backend
+# PittsCurb-Service
 
-> Supplies data to my-space-frontend.
+> This web service provides the functionality for the Admin and Consumer users of PittsCurb application.
+> This application will also serve as a proxy to connect to an SMS service
 
 ## Development setup
 
@@ -22,13 +23,18 @@ To run formatter:
 yarn prettier:write
 ```
 
-## Contributing
+## Deployment
+Approved pull requests will trigger a build deploy pipeline to AWS
 
-Please use yarn. Do not use npm.
+## Contributing
+Create a fork of this repository to your personal GitHub account to develop feature branches that can be merged via Pull Requests
+
+!Please use yarn!. Do not use npm.
 
 This repo will autoformat your code on commit to enforce formatting standards.
 
-1. Create your branch (`git checkout -b fooBar`)
-2. Commit your changes (`git commit -am 'Add some fooBar'`)
-3. Push to the branch (`git push origin fooBar`)
-4. Create a new Merge Request
+1. Fork repository to your GitHub account
+2. Create your branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar because foo supports user'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request back to this project

@@ -1,0 +1,31 @@
+# This workflow will build and package the nodejs service and deploy to AWS via Beanstalk
+
+name: PittsCurb-Service-Build Check
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+          
+    - name: Yarn Install
+      uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: install # will run `yarn install` command
+    - name: Yarn Build
+      uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: build # will run `yarn build` command
+    - name: Syntax Check
+      uses: borales/actions-yarn@v2.0.0
+      with:
+        cmd: tslint

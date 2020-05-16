@@ -5,8 +5,9 @@ name: PittsCurb-Service-CI/CD
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # Turning this off so it only builds and deploys after a merge is completed which results in a push
+  #  pull_request:
+  #  branches: [ master ]
 
 jobs:
   build:
@@ -15,20 +16,21 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v2
           
-    - uses: borales/actions-yarn@v2.0.0
+    - name: Yarn Install
+      uses: borales/actions-yarn@v2.0.0
       with:
         cmd: install # will run `yarn install` command
-    - uses: borales/actions-yarn@v2.0.0
+    - name: Yarn Build
+      uses: borales/actions-yarn@v2.0.0
       with:
         cmd: build # will run `yarn build` command
-    - uses: borales/actions-yarn@v2.0.0
-      with:
-        cmd: package # Package build for elasticbeanstalk
+    - name: Zip build
+      run: zip -r buildartifact.zip build/* package.json
     - name: Get timestamp
       uses: gerred/actions/current-time@master
       id: current-time
@@ -47,6 +49,7 @@ jobs:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: PittsCurb-Service
-        environment_name: PittsCurb-Service-dev
+        environment_name: PittscurbService-Prod
         version_label: "PittsCurb-Service-${{ steps.format-time.outputs.replaced }}"
         region: us-east-1  
+        deployment_package: buildartifact.zip
