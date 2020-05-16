@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/', (req, res) => {
   apiHelper
-    .restWrapper(`${twillioBaseURL}/twPing`)
+    .restWrapper(`${twillioBaseURL}/v1/health/twPing`)
     .then((response: any) => {
       res.json(response);
     })
