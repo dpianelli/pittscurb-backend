@@ -13,4 +13,5 @@ app.get('/health', (req, res) => {
   res.send('Success');
 });
 app.use('/twillio', apis.twillio);
+app.use('/location', apis.location);
 app.listen(8080);
